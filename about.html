@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> ecs 171 project</title>
+    <link rel="Stylesheet" href="css/about.css">
+    <style>
+        body {
+            cursor: url('img/cursor.png'), auto;
+
+            overflow-y: scroll; /* Show scrollbars */
+        }
+        body::-webkit-scrollbar {
+            width: .5em;
+        }
+
+        body::-webkit-scrollbar-track {
+            background: #170801;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: #deb782;
+            border-radius: 100vw;
+        }
+
+        body::-webkit-scrollbar-thumb:hover {
+            background: #deb782;
+        }
+    </style>
+</head>
+<body>
+</body>
+<nav>
+    <div class="logo">CQR</div>
+    <div class="nav-items">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Models</a>
+        <a href="about.html">About</a>
+    </div>
+</nav>
+<div style="height: 30px;"></div>
+<section class ="ansh">
+    <div class="ansh-container">
+        <div class="column-left">
+            <h1> Used Dataset</h1>
+                <p> The dataset we will be using is a Kaggle dataset provided by Rachael
+                    <br> Tatman. The dataset has over 1700 different chocolate bar ratings.
+                    <br> Each chocolate bar has the following features: the company, the broad
+                    <br> bean origin, the specific bean origin, the REF (corresponding to when
+                    <br> the bar was added to the dataset), the review date, the cocoa percentage,
+                <br> the company location, and the bean type. There is one target variable that we
+                <br> will be trying to predict, which is the expert rating of the chocolate. The
+                <br> ratings are provided in the dataset, and as such we will be attempting to
+                <br> construct a model that is best fit for those ratings. Click the "k" below
+                    <br> to access the dataset.
+            <p>
+        </div>
+
+        <div class="column-bottom">
+            <a href="https://www.kaggle.com/datasets/rtatman/chocolate-bar-ratings/data">
+                <img src="img/kaggle.png"
+                     alt=" the logo"
+                     class = "ansh-image"
+                     style="width:200px;height:200px;"
+                >
+            </a>
+        </div>
+    </div>
+</section>
+</html>
