@@ -5,7 +5,7 @@ import pandas as pd  # For handling input data
 app = Flask(__name__)
 
 # Load the pretrained model
-model = joblib.load("model.pkl")  # Replace with the actual path to your model file
+model = joblib.load("lightgbm_model.pkl")  # Replace with the actual path to your model file
 
 @app.route("/")
 def index():
