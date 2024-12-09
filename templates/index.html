@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Machine Learning Classification Project</title>
+</head>
+<body>
+    <h1 >Machine Learning Classification Project</h1>
+    <form method="POST" action="/predict" name = "chocolate">
+        <label for="input">Enter data REF:</label>
+        <input type="text" name="REF" id="REF" required>
+        <br>
+        <label for="input">Enter review date (year):</label>
+        <input type="number" min="1900" max="2099" step="1" value="2016" name = "date" id = "date"/>
+        <br>
+        <label for="input">Enter cocoa percent (0-100%):</label>
+        <input type="number" min="0" max="100" id="cocoa_percent" name = "cocoa_percent"/>
+        <br>
+        <label for="input">Enter company location:</label>
+        <select id="company_location" name="company_location">
+            <option value="Africa">Africa</option>
+            <option value="Asia">Asia</option>
+            <option value="North America">North America</option>
+            <option value="Central America">Central America</option>
+            <option value="South America">South America</option>
+            <option value="Carribean">Carribean</option>
+            <option value="Eastern Europe">Eastern Europe</option>
+            <option value="Central Europe">Central Europe</option>
+            <option value="Central Europe">Western Europe</option>
+            <option value="Oceania">Oceania</option>
+          </select>
+        <br>
+        <label for="input">Enter bean origin location:</label>
+        <select id="bean_origin" name="bean_origin">
+            <option value="Africa">Africa</option>
+            <option value="Asia">Asia</option>
+            <option value="North America">North America</option>
+            <option value="Central America">Central America</option>
+            <option value="South America">South America</option>
+            <option value="Carribean">Carribean</option>
+            <option value="Oceania">Oceania</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        <br>
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>

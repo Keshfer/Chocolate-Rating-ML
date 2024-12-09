@@ -21,24 +21,34 @@ def predict():
     """
     try:
         # Get user input from the form
-        input_data = request.form.get("input")
+        input_data = request.form
+        print("form submission:", input_data)
         
         # Convert input data into a DataFrame for compatibility with the model
         # Assuming the input is a single feature; adjust columns as needed
-        input_df = pd.DataFrame([[input_data]], columns=["feature_name"])  # Replace "feature_name" with the actual column name
+        # input_df = pd.DataFrame([[input_data]], columns=["REF","Review Date","Cocoa Percent","Rating","Company Location_AF","Company Location_AS","Company Location_CA","Company Location_CEU","Company Location_CR","Company Location_EEU",Company Location_NA,Company Location_OC,Company Location_SA,Company Location_WEU,Broad Bean Origin_AF,Broad Bean Origin_AS,Broad Bean Origin_CA,Broad Bean Origin_CR,Broad Bean Origin_NA,Broad Bean Origin_OC,Broad Bean Origin_SA,Broad Bean Origin_Unknown])  # Replace "feature_name" with the actual column name
+        formatted_submission = []
+        formatted_submission.append(input_data.get("REF")) 
+        formatted_submission.append(input_data.get("date")) 
+        formatted_submission.append(input_data.get("cocoa_percent")) 
+
+        formatted_submission.append(int(input_data.get("company_location") == 'Africa'))
+
+        print(formatted_submission)
+        
 
         # Preprocess input data if needed
         # For example, scaling or encoding can be done here
         # preprocessed_data = preprocess(input_df)  # Uncomment and define preprocess if required
         
         # Make prediction using the loaded model
-        prediction = model.predict(input_df)  # Ensure input_df matches the model's expected format
+        # prediction = model.predict(input_df)  # Ensure input_df matches the model's expected format
 
         # Format the prediction result for display
-        predicted_value = prediction[0]  # Assuming a single output value
+        # predicted_value = prediction[0]  # Assuming a single output value
         
         # Render the result in the result.html template
-        return render_template("result.html", prediction=predicted_value)
+        return render_template("result.html", prediction=3)
 
     except Exception as e:
         return f"An error occurred: {str(e)}"
