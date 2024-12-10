@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 # Load the pretrained model
 model_lightgbm = joblib.load("lightgbm_model.pkl")  # Replace with the actual path to your model file
+model_svr = joblib.load("SVR_model.pkl")
 #grid2 only uses REf and Cocoa Percent grid1 uses all the features
 model_rf = joblib.load("rfmodel_grid.joblib")
 model_rf2 = joblib.load("rfmodel_grid2.joblib") 
@@ -32,6 +33,8 @@ def predict():
         #print(f"dataframe {input_df}")
         if input_data.get("model_type") == 'LightGBM':
             curr_model = model_lightgbm
+        elif input_data.get("model_type") == "SVR":
+            curr_model = model_svr
         elif input_data.get("model_type") == 'Random Forest':
             curr_model = model_rf
         elif input_data.get("model_type") == 'Random Forest 2':
@@ -61,7 +64,7 @@ def predict():
             formatted_submission.append(int(input_data.get("bean_origin") == 'South America'))
             formatted_submission.append(int(input_data.get("bean_origin") == 'Unknown'))
             formatted_submission = [formatted_submission]
-            input_df = pd.DataFrame(formatted_submission, columns=["REF","Review Date","Cocoa Percent","Company Location_AF","Company Location_AS","Company Location_CA","Company Location_CEU","Company Location_CR","Company Location_EEU","Company Location_NA","Company Location_OC","Company Location_SA","Company Location_WEU","Broad Bean Origin_AF","Broad Bean Origin_AS","Broad Bean Origin_CA","Broad Bean Origin_CR","Broad Bean Origin_NA","Broad Bean Origin_OC","Broad Bean Origin_SA","Broad Bean Origin_Unknown"])  # Replace "feature_name" with the actual column name
+            input_df = pd.DataFrame(formatted_submission, columns=["REF","Review_Date","Cocoa_Percent","Company_Location_AF","Company_Location_AS","Company_Location_CA","Company_Location_CEU","Company_Location_CR","Company_Location_EEU","Company_Location_NA","Company_Location_OC","Company_Location_SA","Company_Location_WEU","Broad_Bean_Origin_AF","Broad_Bean_Origin_AS","Broad_Bean_Origin_CA","Broad_Bean_Origin_CR","Broad_Bean_Origin_NA","Broad_Bean_Origin_OC","Broad_Bean_Origin_SA","Broad_Bean_Origin_Unknown"])  # Replace "feature_name" with the actual column name
         else:
             formatted_submission.append(input_data.get("REF"))
             formatted_submission.append(input_data.get("cocoa_percent")) 
@@ -76,10 +79,10 @@ def predict():
 
         # Format the prediction result for display
         predicted_value = prediction[0]  # Assuming a single output value
-        print(predicted_value)
+        #print(predicted_value)
         
         # Render the result in the result.html template
-        return render_template("result.html", prediction=3)
+        return render_template("results.html", prediction=predicted_value)
 
     except Exception as e:
         return f"An error occurred: {str(e)}"
