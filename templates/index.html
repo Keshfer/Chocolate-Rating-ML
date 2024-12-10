@@ -8,7 +8,7 @@
     <h1 >Machine Learning Classification Project</h1>
     <form method="POST" action="/predict" name = "chocolate">
         <label for="input">Enter data REF:</label>
-        <input type="text" name="REF" id="REF" required>
+        <input type="number" name="REF" id="REF" required>
         <br>
         <label for="input">Enter review date (year):</label>
         <input type="number" min="1900" max="2099" step="1" value="2016" name = "date" id = "date"/>
@@ -41,6 +41,13 @@
             <option value="Oceania">Oceania</option>
             <option value="Unknown">Unknown</option>
           </select>
+        <br>
+        <label for="input">Select a model:</label>
+        <select id="model_type" name="model_type">
+          <option values="lightgbm">LightGBM</option>
+          <option values="randomforest"> Random Forest</option>
+          <option values="randomforest2">Random Forest 2</option>
+        </select>
         <br>
         <button type="submit">Predict</button>
     </form>
